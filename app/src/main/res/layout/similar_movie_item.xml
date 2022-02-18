@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.example.movieapp.api.Api"/>
+        <variable
+            name="movie"
+            type="com.example.movieapp.model.Movie" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:foreground="?attr/selectableItemBackground"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="4dp">
+
+
+        <RelativeLayout
+            android:layout_width="150dp"
+            android:layout_height="100dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/movie_image"
+                app:loadPaletteImage="@{Api.getBackdropPath(movie.imageEndPoint)}"
+                app:loadPaletteTarget="@{similarMovieTitle}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:id="@+id/similar_movie_title"
+                android:layout_alignParentBottom="true"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:alpha="0.7"
+                    android:orientation="vertical" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="3dp"
+                    android:text="@{movie.title}"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

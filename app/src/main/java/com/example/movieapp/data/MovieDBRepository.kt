@@ -1,22 +1,21 @@
 package com.example.movieapp.data
 
-import android.util.Log
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.example.movieapp.api.MovieDBService
 import com.example.movieapp.db.MovieDatabase
-import com.example.movieapp.model.Movie
+import com.example.movieapp.model.PopularMovie
 import kotlinx.coroutines.flow.Flow
 
 class MovieDBRepository(
     private val service: MovieDBService,
     private val database: MovieDatabase
 ){
-    fun getMovieResultStream(): Flow<PagingData<Movie>> {
+    fun getMovieResultStream(): Flow<PagingData<PopularMovie>> {
 
-        val pagingSourceFactory = { database.movieDao().movies() }
+        val pagingSourceFactory = { database.popularMovieDao().movies() }
 
         @OptIn(ExperimentalPagingApi::class)
         return Pager(
@@ -33,3 +32,4 @@ class MovieDBRepository(
         private const val NETWORK_PAGE_SIZE = 20
     }
 }
+

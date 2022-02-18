@@ -1,4 +1,4 @@
-package com.example.movieapp.ui
+package com.example.movieapp.ui.list
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -14,3 +14,4 @@ class ViewModelFactory(private val repository: MovieDBRepository) : ViewModelPro
         throw IllegalArgumentException("Unknown ViewModel class")
     }
 }
+
